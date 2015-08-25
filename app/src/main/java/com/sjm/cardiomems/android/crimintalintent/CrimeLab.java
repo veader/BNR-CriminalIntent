@@ -3,6 +3,7 @@ package com.sjm.cardiomems.android.crimintalintent;
 import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class CrimeLab {
     private static CrimeLab sCrimeLab;
@@ -34,4 +35,12 @@ public class CrimeLab {
         mCrimes = crimes;
     }
 
+    public Crime getCrime(UUID id) {
+        for (Crime crime : mCrimes) {
+            if (crime.getId().equals(id)) {
+                return crime;
+            }
+        }
+        return null;
+    }
 }
