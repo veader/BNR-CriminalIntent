@@ -14,8 +14,11 @@ import android.widget.TextView;
 import java.util.List;
 
 public class CrimeListFragment extends Fragment {
+    private static final int REQUEST_CRIME = 1;
+
     private RecyclerView mCrimeRecyclerView;
     private CrimeAdapter mAdapter;
+    private int mTappedPosition;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,6 +42,9 @@ public class CrimeListFragment extends Fragment {
         if (mAdapter == null) {
             mAdapter = new CrimeAdapter(crimes);
             mCrimeRecyclerView.setAdapter(mAdapter);
+        } else if(mTappedPosition > 0) {
+            mAdapter.notifyItemChanged(mTappedPosition);
+            mTappedPosition = -1; // clear it
         } else {
             mAdapter.notifyDataSetChanged();
         }
@@ -96,6 +102,7 @@ public class CrimeListFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
+            mTappedPosition = getAdapterPosition();
             Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId());
             startActivity(intent);
         }

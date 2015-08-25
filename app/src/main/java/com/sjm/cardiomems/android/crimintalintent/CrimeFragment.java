@@ -1,5 +1,6 @@
 package com.sjm.cardiomems.android.crimintalintent;
 
+import android.app.Activity;
 import android.os.Bundle;
 // import android.app.Fragment;
 import android.support.v4.app.Fragment;
@@ -34,6 +35,10 @@ public class CrimeFragment extends Fragment {
 
     public CrimeFragment() {
         // Required empty public constructor
+    }
+
+    public void returnResult() {
+        getActivity().setResult(Activity.RESULT_OK, getActivity().getIntent());
     }
 
     @Override
