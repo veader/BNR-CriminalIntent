@@ -118,6 +118,16 @@ public class CrimeFragment extends Fragment {
             }
         });
 
+        Button deleteButton = (Button)v.findViewById(R.id.delete_crime);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CrimeLab lab = CrimeLab.get(getActivity());
+                lab.removeCrime(mCrime);
+                getActivity().finish();
+            }
+        });
+
         return v;
     }
 }

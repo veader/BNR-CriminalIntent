@@ -33,4 +33,17 @@
               android:layout_marginRight="16dp"
               android:text="@string/crime_solved_label"
         />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/delete_crime"
+            android:text="@string/delete_crime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:backgroundTint="#b7ff0004"/>
+    </RelativeLayout>
 </LinearLayout>
