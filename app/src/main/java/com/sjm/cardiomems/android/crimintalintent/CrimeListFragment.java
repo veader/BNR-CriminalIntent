@@ -14,8 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
-
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class CrimeListFragment extends Fragment {
@@ -175,9 +173,7 @@ public class CrimeListFragment extends Fragment {
         public void bindCrime(Crime crime) {
             mCrime = crime;
             mTitleTextView.setText(mCrime.getTitle());
-            SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, MMM d, yyyy");
-            // mDateTextView.setText(mCrime.getDate().toString());
-            mDateTextView.setText(dateFormat.format(mCrime.getDate()));
+            mDateTextView.setText(mCrime.getDateString());
             mSolvedCheckBox.setChecked(mCrime.isSolved());
         }
 

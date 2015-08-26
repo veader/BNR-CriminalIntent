@@ -1,5 +1,6 @@
 package com.sjm.cardiomems.android.crimintalintent;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -9,6 +10,7 @@ public class Crime {
     private String mTitle;
     private Date mDate;
     private boolean mSolved;
+    private String mSuspect;
 
     public Crime() {
         this(UUID.randomUUID());
@@ -31,6 +33,11 @@ public class Crime {
         return mDate;
     }
 
+    public String getDateString() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, MMM d, yyyy");
+        return dateFormat.format(mDate);
+    }
+
     public boolean isSolved() {
         return mSolved;
     }
@@ -50,5 +57,14 @@ public class Crime {
     public void setSolved(boolean solved) {
         mSolved = solved;
     }
+
+    public String getSuspect() {
+        return mSuspect;
+    }
+
+    public void setSuspect(String suspect) {
+        mSuspect = suspect;
+    }
+
 
 }
