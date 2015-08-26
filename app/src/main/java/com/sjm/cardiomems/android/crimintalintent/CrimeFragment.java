@@ -56,8 +56,10 @@ public class CrimeFragment extends Fragment {
     }
 
     private void updateDate() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, MMM d, yyyy");
-        mDateButton.setText(dateFormat.format(mCrime.getDate()));
+        if (mCrime != null) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, MMM d, yyyy");
+            mDateButton.setText(dateFormat.format(mCrime.getDate()));
+        }
     }
 
     @Override
@@ -70,6 +72,12 @@ public class CrimeFragment extends Fragment {
 //        if (getArguments() != null) {
 //            mParam1 = getArguments().getString(ARG_PARAM1);
 //        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        CrimeLab.get(getActivity()).updateCrime(mCrime);
     }
 
     @Override
@@ -130,4 +138,5 @@ public class CrimeFragment extends Fragment {
 
         return v;
     }
+
 }
