@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -165,9 +166,18 @@ public class CrimeListFragment extends Fragment {
         public CrimeHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            mTitleTextView = (TextView)itemView.findViewById(R.id.list_item_crime_title_text_view);
-            mDateTextView  = (TextView)itemView.findViewById(R.id.list_item_crime_date_text_view);
+            mTitleTextView  = (TextView)itemView.findViewById(R.id.list_item_crime_title_text_view);
+            mDateTextView   = (TextView)itemView.findViewById(R.id.list_item_crime_date_text_view);
             mSolvedCheckBox = (CheckBox)itemView.findViewById(R.id.list_item_crime_solved_check_box);
+            mSolvedCheckBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Boolean isChecked = mSolvedCheckBox.isChecked();
+                    mCrime.setSolved(isChecked);
+                    CrimeLab lab = CrimeLab.get(getActivity());
+                    lab.updateCrime(mCrime);
+                }
+            });
         }
 
         public void bindCrime(Crime crime) {
